@@ -1,0 +1,137 @@
+[TITLE]
+;;Project Title/Notes
+
+[OPTIONS]
+;;Option             Value
+FLOW_UNITS           LPS
+INFILTRATION         CURVE_NUMBER
+FLOW_ROUTING         KINWAVE
+LINK_OFFSETS         DEPTH
+MIN_SLOPE            0
+ALLOW_PONDING        NO
+SKIP_STEADY_STATE    NO
+
+START_DATE           06/18/2009
+START_TIME           00:00:00
+REPORT_START_DATE    09/26/2009
+REPORT_START_TIME    15:00:00
+END_DATE             09/27/2009
+END_TIME             12:26:00
+SWEEP_START          01/01
+SWEEP_END            12/31
+DRY_DAYS             1
+REPORT_STEP          00:02:00
+WET_STEP             00:02:00
+DRY_STEP             00:02:00
+ROUTING_STEP         0:00:30 
+
+INERTIAL_DAMPING     PARTIAL
+NORMAL_FLOW_LIMITED  BOTH
+FORCE_MAIN_EQUATION  H-W
+VARIABLE_STEP        0.75
+LENGTHENING_STEP     0
+MIN_SURFAREA         1.14
+MAX_TRIALS           8
+HEAD_TOLERANCE       0.0015
+SYS_FLOW_TOL         5
+LAT_FLOW_TOL         5
+MINIMUM_STEP         0.5
+THREADS              1
+
+[EVAPORATION]
+;;Data Source    Parameters
+;;-------------- ----------------
+CONSTANT         0.0
+DRY_ONLY         NO
+
+[RAINGAGES]
+;;Name           Format    Interval SCF      Source    
+;;-------------- --------- ------ ------ ----------
+rain             INTENSITY 1:00     1.0      TIMESERIES precip          
+
+[SUBCATCHMENTS]
+;;Name           Rain Gage        Outlet           Area     %Imperv  Width    %Slope   CurbLen  SnowPack        
+;;-------------- ---------------- ---------------- -------- -------- -------- -------- -------- ----------------
+subcatchment     rain             inlet            0.7405   32       78.0503  37.4211  0                        
+
+[SUBAREAS]
+;;Subcatchment   N-Imperv   N-Perv     S-Imperv   S-Perv     PctZero    RouteTo    PctRouted 
+;;-------------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+subcatchment     0.012      0.8        COCO       17.679     25         OUTLET    
+
+[INFILTRATION]
+;;Subcatchment   CurveNum              DryTime   
+;;-------------- ---------- ---------- ----------
+subcatchment     BOBO       0.5        1.0531    
+
+[JUNCTIONS]
+;;Name           Elevation  MaxDepth   InitDepth  SurDepth   Aponded   
+;;-------------- ---------- ---------- ---------- ---------- ----------
+inlet            125        0          0          0          0         
+
+[LANDUSES]
+;;               Sweeping   Fraction   Last      
+;;Name           Interval   Available  Swept     
+;;-------------- ---------- ---------- ----------
+highway_up       0          0          0         
+highway          0          0          0         
+grass_left       0          0          0         
+grass_right      0          0          0         
+
+[COVERAGES]
+;;Subcatchment   Land Use         Percent   
+;;-------------- ---------------- ----------
+subcatchment     highway_up       100       
+
+[CURVES]
+;;Name           Type       X-Value    Y-Value   
+;;-------------- ---------- ---------- ----------
+Inifltration_basin Storage    0          411.8     
+Inifltration_basin            0.91       1241.21   
+
+[TIMESERIES]
+;;Name           Date       Time       Value     
+;;-------------- ---------- ---------- ----------
+precip           FILE  location_of_forcing_files
+
+[REPORT]
+;;Reporting Options
+INPUT      NO
+CONTROLS   NO
+SUBCATCHMENTS ALL
+NODES ALL
+LINKS ALL
+
+[TAGS]
+
+[MAP]
+DIMENSIONS -283.951 0.000 10283.951 10000.000
+Units      None
+
+[COORDINATES]
+;;Node           X-Coord            Y-Coord           
+;;-------------- ------------------ ------------------
+inlet            5569.832           6446.927          
+
+[VERTICES]
+;;Link           X-Coord            Y-Coord           
+;;-------------- ------------------ ------------------
+
+[Polygons]
+;;Subcatchment   X-Coord            Y-Coord           
+;;-------------- ------------------ ------------------
+subcatchment     5513.966           5150.838          
+subcatchment     5659.218           5139.665          
+subcatchment     5770.950           5519.553          
+subcatchment     6039.106           5575.419          
+subcatchment     6620.112           5262.570          
+subcatchment     6798.883           5296.089          
+subcatchment     5558.659           6815.642          
+subcatchment     5189.944           6513.966          
+subcatchment     5480.447           5318.436          
+
+[SYMBOLS]
+;;Gage           X-Coord            Y-Coord           
+;;-------------- ------------------ ------------------
+rain             1828.358           9029.851          
+
